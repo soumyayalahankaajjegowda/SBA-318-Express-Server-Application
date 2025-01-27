@@ -37,7 +37,6 @@ const hbs = exphbs.create({
     defaultLayout: 'main',
 })
 app.engine('handlebars', hbs.engine);
-
 app.set('view engine', 'handlebars');
 
 
