@@ -37,6 +37,7 @@ const hbs = exphbs.create({
     extname: '.handlebars',
 });
 app.engine('handlebars', hbs.engine);
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'handlebars');
 
 // //homepage Route for index.html
@@ -47,11 +48,7 @@ app.set('view engine', 'handlebars');
 //Homepage Route
 app.get('/', (req, res) => {res.render('index',{
     title: 'Member App',
-    members: [
-        { name: 'John Doe', email: 'john@gmail.com' },
-        { name: 'Bob Williams', email: 'bob@gmail.com' },
-        { name: 'Shannon Jackson', email: 'shannon@gmail.com' }
-    ] // Pass the members data to the view
+    members: members
 });
 });
 
@@ -67,6 +64,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/members', require('./routes/api/members'))
 
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => console.log(`server started on port ${PORT}`));
