@@ -1,11 +1,10 @@
 //members App
 const express = require ('express');
 const path = require('path'); 
-const app = express();
-//const exphbs  = require('express-handlebars');
+const exphbs  = require('express-handlebars');
  const logger = require('./middleware/logger');
  const members = require('./Members');
-
+const app = express();
 
 
 // const logger = (req, res, next) => {
