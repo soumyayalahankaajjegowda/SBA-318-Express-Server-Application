@@ -6,6 +6,10 @@
     "start": "node index",
     "dev": "nodemon index"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soumyayalahankaajjegowda/SBA-318-Express-Server-Application.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

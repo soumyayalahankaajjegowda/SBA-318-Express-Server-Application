@@ -1,21 +1,85 @@
-body {
-    background: gray;
+/* body {
+    background: rgb(231, 213, 213);
     color: white;
+} */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
 }
 
-h1{
-    color:#007bff;
+h1 {
+    color: #007bff;
+    text-align: center;
+    margin-top: 20px;
 }
 
-.list-group-item {
-    background-color: #e9ecef;
-}
-
-.btn-primary{
-    background-color: #281745;
-    border-color: #28a745;
+h3 {
+    color: #333;
 }
 
 .container {
     margin-top: 30px;
+}
+
+/* Form Styling */
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-size: 16px;
+}
+
+input[type="text"], input[type="email"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Bootstrap overrides for list-group */
+.list-group-item {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+}
+
+.list-group-item:hover {
+    background-color: #f1f1f1;
+}
+
+/* Button Styling */
+.btn-light {
+    background-color: #f8f9fa;
+    color: #333;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+.btn-light:hover {
+    background-color: #e2e6ea;
+}
+
+/* Add margins and padding for the page */
+.mb-4 {
+    margin-bottom: 20px;
+}
+
+.mt-4 {
+    margin-top: 20px;
 }

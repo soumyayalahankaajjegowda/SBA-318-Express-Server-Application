@@ -75,6 +75,8 @@ router.get('/:id',(req,res) =>{
         } else {
             res.status(400).json({ msg: `No member with the id of ${req.params.id}` });
         }
+        const newMembers = members.filter(member => member.id !== parseInt(req.params.id));
+    
     });
 
     module.exports = router;
