@@ -1,16 +1,54 @@
 //members App
 const express = require ('express');
-const path = require('path');
-
+const path = require('path'); 
 const app = express();
+const exphbs  = require('express-handlebars');
+ const logger = require('./middleware/logger');
+ const members = require('./Members');
+
+
+
+// const logger = (req, res, next) => {
+//     console.log(
+//         `${req.protocol}://${req.get('host')}
+//          ${rmSync.originalUrl
+//          }: ${moment().format()}`
+//          );
+//     next();
+// };
+
+// Init middleware
+app.use(logger);
+
+// Gets All Members
+app.get('/api/members', (req, res) => res.json(members));
 
 // app.get('/api/members',(req, res) => {
 //     res.json(members)
 // })
+//Handlebars Middleware
+app.engine('handlebars', exphbs({ defaultLayout: 'main'}));
+
+app.set('view engine', 'handlebars');
+
+
+// Body Parser Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+//Homepage Route
+app.get('/', (req, res) => res.render('index',{
+    title: 'Member App',
+    members
+}));
+
 
 //set static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
+//Members API Routes
+app.use('/api/members', require('./routes/api/members'))
+
 const PORT = process.env.PORT || 5000;
 
-app.listen(prototype, () => console.log(`server started on port ${PORT}`));
+app.listen(prot, () => console.log(`server started on port ${PORT}`));
