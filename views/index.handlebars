@@ -1,7 +1,15 @@
 <!--index.handlebars-->
-<h1 class="text-center mb-3">
-    {{title}}
-</h1>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width", initial-scale="1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="../public/css/style.css"/>
+    </head>
+    <body>
+        <h1 class="text-center mb-3">
+        {{title}} </h1>
 
 <!-- Form to add a new member -->
 <form action="/api/members" method="post" class="mb-4">
@@ -23,7 +31,7 @@
     function validateForm() {
         const name = document.forms["myForm"]["name"].value;
         const email = document.forms["myForm"]["email"].value;
-        if (name == "" || eamail == "") {
+        if (name == "" || email == "") {
             alert("Both name and email must be filled out");
             return false;
         }
@@ -42,3 +50,5 @@
     <a href="/api/members" class="btn btn-light mt-4">Visit API</a>
     <!-- to visit about page-->
     <a href="/about">About</a>
+</body>
+</html>
