@@ -18,6 +18,17 @@
 
 </form>
 
+<script>
+    function validateForm() {
+        const name = document.forms["myForm"]["name"].value;
+        const email = document.forms["myForm"]["email"].value;
+        if (name == "" || eamail == "") {
+            alert("Both name and email must be filled out");
+            return false;
+        }
+    }
+</script>
+
 <h4>Members</h4>
 {{!-- bootstrp--}}
 <ul class="list-group">
@@ -28,3 +39,4 @@
 
     <!-- button to visit the API-->
     <a href="/api/members" class="btn btn-light mt-4">Visit API</a>
+    <a href="/about">About</a>

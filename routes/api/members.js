@@ -10,11 +10,13 @@ const members = require('../../Members');
 
 router.get('/',(req, res)=> res.json(members));
 
-//get single member
+//get single member by id
 router.get('/:id',(req,res) =>{
-    const found = members.some(member => member.id=== parseInt(req.params.id));
-    if(found){
-        res.json(members.some(member => member.id=== parseInt(req.params.id)));
+    //use find() to get the member object
+    const member = members.find(member => member.id === parseInt(req.params.id)); //finds and returns the actual member object if it exists.
+
+    if(member){
+        res.json(member); //return the member object
     } else {
         res.status(400).json({msg: `no member with the id of ${req.params.id}`});
     }
@@ -24,19 +26,22 @@ router.get('/:id',(req,res) =>{
 
     router.post('/',(req,res) => {
         const newMember = {
-            id: uuid.v4(),
+            id: uuidv4(),
             name: req.body.name,
             email: req.body.email,
             status: 'active'
-        }
+        };
 
+        // check if name and email is provided
         if (!newMember.name || !newMember.email) {
             return res.status(400).json({ msg: 'please include a name and email' });
         }
-        members.push(newMember);
-        res.json(members); //storing in json
-        //res.redirect('/') //will show in front page
-    })
+
+        members.push(newMember);  // add new member to the array
+
+       // res.json(members); //storing in json // return the updated member list
+        res.redirect('/'); //will show in front page
+    });
 
     //update Member
     router.put('/:id', (req, res) => {

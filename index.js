@@ -19,12 +19,19 @@ const app = express();
 // Init middleware
 app.use(logger);
 
+
+// Body Parser Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+
 // Gets All Members
 app.get('/api/members', (req, res) => res.json(members));
 
 // app.get('/api/members',(req, res) => {
 //     res.json(members)
 // })
+
 //Handlebars  setup using create method
 const hbs = exphbs.create({
     defaultLayout: 'main',
@@ -34,16 +41,16 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 
-// Body Parser Middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-
 //Homepage Route
 app.get('/', (req, res) => res.render('index',{
     title: 'Member App',
     members
 }));
 
+// About page Route
+app.get('/about', (req, res) => {
+    res.render('about', { title: 'About page' });
+});
 
 //set static folder
 app.use(express.static(path.join(__dirname, 'public')));
