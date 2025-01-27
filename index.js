@@ -16,7 +16,7 @@ const app = express();
 //     next();
 // };
 
-// Init middleware
+// Init middleware. global middleware applied to all routes. 
 app.use(logger);
 
 
@@ -25,12 +25,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 
-// Gets All Members
-app.get('/api/members', (req, res) => res.json(members));
+// Gets All Members only log request to /api members
+app.get('/api/members', (req, res) => { 
+    res.json(members)
+});
 
-// app.get('/api/members',(req, res) => {
-//     res.json(members)
-// })
 
 //Handlebars  setup using create method
 const hbs = exphbs.create({

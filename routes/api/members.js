@@ -1,5 +1,5 @@
 const express = require('express');
-const uuid = require('uuid');
+const { v4: uuidv4 } = require('uuid'); //import uuidv4
 const router = express.Router();
 
 //adding the Members.js file here
@@ -26,7 +26,7 @@ router.get('/:id',(req,res) =>{
 
     router.post('/',(req,res) => {
         const newMember = {
-            id: uuidv4(),
+            id: uuidv4(), // generates the unique id for the new member
             name: req.body.name,
             email: req.body.email,
             status: 'active'
