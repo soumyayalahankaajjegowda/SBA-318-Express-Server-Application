@@ -1,7 +1,7 @@
 //members App
 const express = require ('express');
 const path = require('path'); 
-const exphbs  = require('express-handlebars');
+const exphbs = require('express-handlebars');
  const logger = require('./middleware/logger');
  const members = require('./Members');
 const app = express();
@@ -34,16 +34,26 @@ app.get('/api/members', (req, res) => {
 //Handlebars  setup using create method
 const hbs = exphbs.create({
     defaultLayout: 'main',
-})
+    extname: '.handlebars',
+});
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
+// //homepage Route for index.html
+// app.get('/', (req, res) => {
+//     res.sendFile(path.join(__dirname, 'public', 'index.html'));
+// });
 
 //Homepage Route
-app.get('/', (req, res) => res.render('index',{
+app.get('/', (req, res) => {res.render('index',{
     title: 'Member App',
-    members
-}));
+    members: [
+        { name: 'John Doe', email: 'john@gmail.com' },
+        { name: 'Bob Williams', email: 'bob@gmail.com' },
+        { name: 'Shannon Jackson', email: 'shannon@gmail.com' }
+    ] // Pass the members data to the view
+});
+});
 
 // About page Route
 app.get('/about', (req, res) => {

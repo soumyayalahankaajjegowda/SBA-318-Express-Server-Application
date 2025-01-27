@@ -1,3 +1,4 @@
+
 <h1 class="text-center mb-3">
     {{title}}
 </h1>
@@ -5,15 +6,15 @@
 <!-- Form to add a new member -->
 <form action="/api/members" method="post" class="mb-4">
 <div class="form-group">
-    <label for="name" class="form-control">Name</label>
+    <label for="name">Name :</label> 
     <input type="text" name="name" class="form-control" required>
 </div>
-
+<br>
 <div class="form-group">
-    <label for="email">Email</label>
+    <label for="email">Email :</label>
     <input type="email" name="email" class="form-control" required>
 </div>
-
+<br>
 <input type="submit" value="Add Member" class="btn btn-primary btn-block">
 
 </form>
@@ -29,7 +30,7 @@
     }
 </script>
 
-<h4>Members</h4>
+<h3>Members</h3>
 {{!-- bootstrp--}}
 <ul class="list-group">
     {{#each members}}
@@ -39,4 +40,5 @@
 
     <!-- button to visit the API-->
     <a href="/api/members" class="btn btn-light mt-4">Visit API</a>
+    <!-- to visit about page-->
     <a href="/about">About</a>
